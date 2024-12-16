@@ -14,6 +14,12 @@ function addCard(srcValue, altValue) {
     placesItemCard.querySelector('.card__image').src = srcValue;
     placesItemCard.querySelector('.card__image').alt = altValue;
     placesList.append(placesItemCard);
+    const deleteButton = placesItemCard.querySelector('.card__delete-button');
+    console.log(deleteButton);
+    deleteButton.addEventListener('click', function () {
+      placesItemCard.remove();
+  }
+  )  
   }
  //initialCards.forEach(element => {
     //addCard(element[1], element[0]);
@@ -41,16 +47,7 @@ console.dir(placesList)
 addCard('https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg', 'Камчатка')
 addCard('https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg', 'Иваново')
   
-  
 
-
- const deleteButton = document.querySelector('.card__delete-button');
-deleteButton.addEventListener('click', function () {
-    const listItem = deleteButton.closest('.card__delete-button');
-    listItem.remove();
-    placesList.remove();
-}
-)  
 /*
 function renderHasSongs() {
     resetButton.removeAttribute('disabled');

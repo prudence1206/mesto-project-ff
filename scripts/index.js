@@ -12,10 +12,11 @@ const placesList = document.querySelector('.places__list');
 //const resetButton = container.querySelector('.input__btn_action_reset');
 //const noSongsElement = container.querySelector('.no-songs');
 // @todo: Функция создания карточки
-function addCard(srcValue, altValue, deleteCard) {
+function addCard(srcValue, name) {
     const placesItemCard = getCardTemplate();  
     placesItemCard.querySelector('.card__image').src = srcValue;
-    placesItemCard.querySelector('.card__image').alt = altValue;
+    placesItemCard.querySelector('.card__image').alt = name;
+    placesItemCard.querySelector('.card__title').textContent = name;
     placesList.append(placesItemCard);
     const deleteButton = placesItemCard.querySelector('.card__delete-button');
     deleteButton.addEventListener('click', function () {

@@ -11,20 +11,28 @@ const placesList = document.querySelector('.places__list');
 //const container = document.querySelector('.content');
 //const resetButton = container.querySelector('.input__btn_action_reset');
 //const noSongsElement = container.querySelector('.no-songs');
+
+function deleteButton (placesItemCard){
+  const deleteButton = placesItemCard.querySelector('.card__delete-button');
+  deleteButton.addEventListener('click', function () {
+    placesItemCard.remove();
+  }); 
+}
 // @todo: Функция создания карточки
-function addCard(srcValue, name) {
-    const placesItemCard = getCardTemplate();  
-    placesItemCard.querySelector('.card__image').src = srcValue;
-    placesItemCard.querySelector('.card__image').alt = name;
-    placesItemCard.querySelector('.card__title').textContent = name;
-    placesList.append(placesItemCard);
-    const deleteButton = placesItemCard.querySelector('.card__delete-button');
-    deleteButton.addEventListener('click', function () {
-      placesItemCard.remove();
-    });
-  } 
+function createCard(srcValue, name) {
+    const placesItemCard = getCardTemplate();
+    const cardImage = placesItemCard.querySelector('.card__image');  
+    cardImage.src = srcValue;
+    cardImage.alt = name;
+    cardImage.textContent = name;
+    deleteButton(placesItemCard);
+    return placesItemCard;
+    
+  }
+
 
 // @todo: Вывести карточки на страницу
-initialCards.forEach(elem=>{
-  addCard(elem.link, elem.name)
-}); 
+initialCards.forEach((elem) => {
+  const cardElement = createCard(elem.link, elem.name);
+  placesList.append(cardElement);
+});
